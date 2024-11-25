@@ -1,6 +1,6 @@
 import { store } from './Store';
 import { Provider } from 'react-redux';
-import { lightTheme } from './util/Theme';
+import { lightTheme } from './utils/Theme';
 import * as ReactDOM from 'react-dom/client';
 import ApplicationValidator from './ApplicationValidator';
 import { CssBaseline, ThemeProvider } from '@mui/material';

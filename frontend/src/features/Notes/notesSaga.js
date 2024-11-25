@@ -1,7 +1,7 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { REACT_APP_LOCALHOST_URL } from '../../util/Common';
+import { REACT_APP_LOCALHOST_URL } from '../../utils/Common';
 import { notesActions } from './notesSlice';
-import instance from '../../util/Instances';
+import instance from '@utils/Instances';
 
 const BASEURL = `${REACT_APP_LOCALHOST_URL}/api/v1/profile`;
 

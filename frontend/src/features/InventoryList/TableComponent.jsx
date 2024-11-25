@@ -12,7 +12,7 @@ import {
   Typography,
 } from '@mui/material';
 import { EditRounded, FileOpenRounded } from '@mui/icons-material';
-import { EmptyComponent } from '../common/utils';
+import { EmptyComponent } from '../../utils/utils';
 
 /**
  * TableComponent React Function - Displays the inventory table

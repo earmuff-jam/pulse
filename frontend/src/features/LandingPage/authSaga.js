@@ -2,7 +2,7 @@ import axios from 'axios';
 import { authActions } from './authSlice';
 
 import { takeLatest, put, call, takeEvery } from 'redux-saga/effects';
-import { REACT_APP_LOCALHOST_URL } from '../../util/Common';
+import { REACT_APP_LOCALHOST_URL } from '../../utils/Common';
 
 const BASEURL = `${REACT_APP_LOCALHOST_URL}/api/v1`;
 

@@ -1,7 +1,7 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { REACT_APP_LOCALHOST_URL } from '../../util/Common';
-import instance from '../../util/Instances';
+import { REACT_APP_LOCALHOST_URL } from '../../utils/Common';
 import { maintenancePlanActions } from './maintenanceSlice';
+import instance from '@utils/Instances';
 
 const DEFAULT_LIMIT = 10;
 const MAINTENANCE_STATUS_OPTION_TYPE = 'maintenance';

@@ -10,7 +10,19 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', '*.config*'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
+  settings: { 
+    react: { version: '18.2' },
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@common', './src/common'],
+          ['@features', './src/features'],
+          ['@utils', './src/utils']
+        ],
+        extensions: ['.js', '.jsx', '.json']
+      }
+    }
+  },
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'off',

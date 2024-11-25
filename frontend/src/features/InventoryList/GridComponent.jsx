@@ -11,10 +11,10 @@ import {
   Typography,
 } from '@mui/material';
 import dayjs from 'dayjs';
-import { EmptyComponent } from '../common/utils';
+import { EmptyComponent } from '../../utils/utils';
 import { useEffect, useState } from 'react';
-import SimpleModal from '../common/SimpleModal';
-import ImagePicker from '../common/ImagePicker/ImagePicker';
+import SimpleModal from '@common/SimpleModal/SimpleModal';
+import ImagePicker from '../../common/ImagePicker/ImagePicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { inventoryActions } from './inventorySlice';
 

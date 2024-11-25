@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import { useAssignItemsToPlan, useFetchPlans } from '../../features/plan';
 import { WarningOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import { EmptyComponent } from '../common/utils';
+import { EmptyComponent } from '../../utils/utils';
 
 const AssignPlan = ({ rowSelected, handleCloseAssignFn }) => {
   const navigate = useNavigate();

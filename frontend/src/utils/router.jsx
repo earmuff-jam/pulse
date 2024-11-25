@@ -1,18 +1,18 @@
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import Layout from '../Layout/Layout';
-import Reports from '../Reports/Reports';
+import Layout from '../features/Layout/Layout';
+import Reports from '../features/Reports/Reports';
 
-const HomePage = lazy(() => import('../Home/HomePage'));
-const NotesList = lazy(() => import('../Notes/NotesList'));
-const PlanList = lazy(() => import('../Maintenance/PlanList'));
-const ProfilePage = lazy(() => import('../Profile/ProfilePage'));
-const InventoryList = lazy(() => import('../InventoryList/InventoryList'));
-const EditInventory = lazy(() => import('../InventoryList/EditInventory'));
-const CategoryList = lazy(() => import('../Categories/CategoryList'));
-const CategoryItem = lazy(() => import('../Categories/CategoryItem'));
-const MaintenanceItem = lazy(() => import('../Maintenance/MaintenanceItem'));
-const RecentActivityList = lazy(() => import('../Activities/RecentActivityList'));
+const HomePage = lazy(() => import('../features/Home/HomePage'));
+const NotesList = lazy(() => import('../features/Notes/NotesList'));
+const PlanList = lazy(() => import('../features/Maintenance/PlanList'));
+const ProfilePage = lazy(() => import('../features/Profile/ProfilePage'));
+const InventoryList = lazy(() => import('../features/InventoryList/InventoryList'));
+const EditInventory = lazy(() => import('../features/InventoryList/EditInventory'));
+const CategoryList = lazy(() => import('../features/Categories/CategoryList'));
+const CategoryItem = lazy(() => import('../features/Categories/CategoryItem'));
+const MaintenanceItem = lazy(() => import('../features/Maintenance/MaintenanceItem'));
+const RecentActivityList = lazy(() => import('../features/Activities/RecentActivityList'));
 
 export const router = createBrowserRouter([
   {

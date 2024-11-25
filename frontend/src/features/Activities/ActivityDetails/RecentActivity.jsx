@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { CreateNewFolderRounded } from '@mui/icons-material';
 import { RECENT_ACTIVITY_TYPE_MAPPER } from '../constants';
-import { capitalizeFirstLetter } from '../../common/utils';
+import { capitalizeFirstLetter } from '@utils/utils';
 import StyledTimeline from '../StyledTimeline/StyledTimeline';
 
 const RecentActivity = ({ activity }) => {

@@ -24,14 +24,14 @@ import {
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { BLANK_INVENTORY_FORM } from './constants';
-import RowHeader from '../common/RowHeader';
+import RowHeader from '../../utils/RowHeader';
 import { useDispatch, useSelector } from 'react-redux';
 import { inventoryActions } from './inventorySlice';
 import { enqueueSnackbar } from 'notistack';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import ImagePicker from '../common/ImagePicker/ImagePicker';
+import ImagePicker from '../../common/ImagePicker/ImagePicker';
 
 const filter = createFilterOptions();
 dayjs.extend(relativeTime);

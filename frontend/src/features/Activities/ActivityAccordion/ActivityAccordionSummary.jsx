@@ -1,6 +1,6 @@
 import { ExpandMoreRounded } from '@mui/icons-material';
 import { AccordionSummary, Stack, Typography } from '@mui/material';
-import { capitalizeFirstLetter } from '../../common/utils';
+import { capitalizeFirstLetter } from '@utils/utils';
 
 export default function ActivityAccordionSummary({ title, label, prefix }) {
   return (

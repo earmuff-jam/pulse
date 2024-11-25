@@ -1,11 +1,11 @@
 import { Skeleton } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { ConfirmationBoxModal, EmptyComponent } from '../common/utils';
+import { ConfirmationBoxModal, EmptyComponent } from '../../utils/utils';
 import { useDispatch } from 'react-redux';
 import { categoryActions } from './categoriesSlice';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import ItemCard from '../common/ItemCard/ItemCard';
+import ItemCard from '../../common/ItemCard/ItemCard';
 
 dayjs.extend(relativeTime);
 

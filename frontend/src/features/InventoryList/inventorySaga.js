@@ -1,7 +1,7 @@
 import { takeLatest, put, call, takeEvery } from 'redux-saga/effects';
-import { REACT_APP_LOCALHOST_URL } from '../../util/Common';
+import { REACT_APP_LOCALHOST_URL } from '../../utils/Common';
 import { inventoryActions } from './inventorySlice';
-import instance from '../../util/Instances';
+import instance from '@utils/Instances';
 
 const BASEURL = `${REACT_APP_LOCALHOST_URL}/api/v1/profile`;
 const STORAGE_LOCATIONS_BASE_URL = `${REACT_APP_LOCALHOST_URL}/api/v1`;

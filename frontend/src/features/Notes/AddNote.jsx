@@ -7,9 +7,9 @@ import { ADD_NOTES_FORM_FIELDS, STATUS_OPTIONS } from './constants';
 import { useDispatch } from 'react-redux';
 import { AddRounded, CheckCircleRounded } from '@mui/icons-material';
 import { notesActions } from './notesSlice';
-import ColorPicker from '../common/ColorPicker';
-import RetrieveUserLocation from '../common/Location/RetrieveUserLocation';
-import LocationPicker from '../common/Location/LocationPicker';
+import ColorPicker from '../../utils/ColorPicker';
+import RetrieveUserLocation from '../../common/Location/RetrieveUserLocation';
+import LocationPicker from '../../common/Location/LocationPicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider/LocalizationProvider';
 import dayjs from 'dayjs';
 

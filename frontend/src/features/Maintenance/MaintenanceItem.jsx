@@ -1,20 +1,20 @@
 import { Box, Button, Skeleton, Stack } from '@mui/material';
-import BarChart from '../../util/Chart/BarChart';
-import SimpleModal from '../common/SimpleModal';
+import BarChart from '@common/Chart/BarChart';
 import TableComponent from '../InventoryList/TableComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { AddRounded } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
-import DetailsCard from '../common/ItemCard/DetailsCard';
-import RowHeader from '../common/RowHeader';
-import DataTable from '../common/DataTable/DataTable';
+import DetailsCard from '../../common/ItemCard/DetailsCard';
+import RowHeader from '../../utils/RowHeader';
+import DataTable from '../../common/DataTable/DataTable';
 import { ITEMS_IN_MAINTENANCE_PLAN_HEADER } from './constants';
 import { maintenancePlanActions } from './maintenanceSlice';
 import { useParams } from 'react-router-dom';
 import { VIEW_INVENTORY_LIST_HEADERS } from '../InventoryList/constants';
-import { generateTitleColor } from '../common/utils';
+import { generateTitleColor } from '../../utils/utils';
 import dayjs from 'dayjs';
 import { inventoryActions } from '../InventoryList/inventorySlice';
+import SimpleModal from '@common/SimpleModal/SimpleModal';
 
 export default function MaintenanceItem() {
   const { id } = useParams();
@@ -95,7 +95,7 @@ export default function MaintenanceItem() {
         title={selectedMaintenancePlan?.name ? `${selectedMaintenancePlan.name} Overview` : 'Maintenance Plan Overview'}
         caption="View details of selected maintenance plan"
       />
-      <DetailsCard selectedItem={selectedMaintenancePlan} selectedImage={selectedMaintenancePlanImage}/>
+      <DetailsCard selectedItem={selectedMaintenancePlan} selectedImage={selectedMaintenancePlanImage} />
       <RowHeader
         title="Items"
         caption={`Total ${itemsInMaintenancePlan?.length || 0} item(s)`}

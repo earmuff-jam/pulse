@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 import { Suspense, useEffect, useState } from 'react';
 import MenuActionBar from './MenuActionBar';
-import { darkTheme, lightTheme } from '../../util/Theme';
+import { darkTheme, lightTheme } from '../../utils/Theme';
 import { DarkModeRounded, LightModeOutlined, LogoutRounded, MenuOutlined } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../LandingPage/authSlice';

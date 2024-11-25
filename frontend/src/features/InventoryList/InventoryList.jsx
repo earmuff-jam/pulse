@@ -8,9 +8,9 @@ import {
   SearchRounded,
   ViewListRounded,
 } from '@mui/icons-material';
-import RowHeader from '../common/RowHeader';
-import SimpleModal from '../common/SimpleModal';
-import { ConfirmationBoxModal, generateTitleColor } from '../common/utils';
+import RowHeader from '../../utils/RowHeader';
+import SimpleModal from '@common/SimpleModal/SimpleModal';
+import { ConfirmationBoxModal, generateTitleColor } from '../../utils/utils';
 import TableComponent from './TableComponent';
 import GridComponent from './GridComponent';
 import { VIEW_INVENTORY_LIST_HEADERS } from './constants';

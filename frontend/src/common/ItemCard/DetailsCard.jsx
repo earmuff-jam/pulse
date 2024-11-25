@@ -1,28 +1,20 @@
-import {
-  Badge,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Stack,
-  Typography,
-} from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import { AddPhotoAlternateRounded, ShareRounded } from '@mui/icons-material';
-import { useDispatch, useSelector } from 'react-redux';
-import { profileActions } from '../../Profile/profileSlice';
 import { useEffect, useState } from 'react';
-import SimpleModal from '../SimpleModal';
-import SharableGroups from '../SharableGroups';
-import { categoryActions } from '../../Categories/categoriesSlice';
+
+import dayjs from 'dayjs';
 import { produce } from 'immer';
-import { maintenancePlanActions } from '../../Maintenance/maintenanceSlice';
 import { useNavigate } from 'react-router-dom';
-import ImagePicker from '../ImagePicker/ImagePicker';
+import { useDispatch, useSelector } from 'react-redux';
+
+import SharableGroups from '@utils/SharableGroups';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import SimpleModal from '@common/SimpleModal/SimpleModal';
+import ImagePicker from '@common/ImagePicker/ImagePicker';
+import { profileActions } from '@features/Profile/profileSlice';
+import { categoryActions } from '@features/Categories/categoriesSlice';
+import { AddPhotoAlternateRounded, ShareRounded } from '@mui/icons-material';
+import { maintenancePlanActions } from '@features/Maintenance/maintenanceSlice';
+import { Badge, Button, Card, CardActions, CardContent, CardMedia, IconButton, Stack, Typography } from '@mui/material';
 
 dayjs.extend(relativeTime);
 
@@ -99,12 +91,12 @@ export default function DetailsCard({ selectedItem, selectedImage, isViewingCate
 
   useEffect(() => {
     dispatch(profileActions.getFavItems({ limit: 1000 }));
-  }, []); 
+  }, []);
 
   return (
     <>
       <Card>
-        <CardMedia sx={{ height: '10rem' }} image={ selectedImage || '/blank_canvas.png'} />
+        <CardMedia sx={{ height: '10rem' }} image={selectedImage || '/blank_canvas.png'} />
         <CardContent>
           <Stack direction="row" alignItems="flex-start">
             <IconButton size="small" onClick={(ev) => handleFavItem(ev, selectedItem.id, isFavourite)}>

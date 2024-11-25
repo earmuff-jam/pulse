@@ -1,7 +1,7 @@
 import { AlarmAddRounded, DeleteRounded, EditNoteRounded } from '@mui/icons-material';
 import { Box, Card, CardActions, CardContent, IconButton, Stack, Tooltip, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { STATUS_OPTIONS } from '../../Notes/constants';
+import { STATUS_OPTIONS } from '../../features/Notes/constants';
 
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';

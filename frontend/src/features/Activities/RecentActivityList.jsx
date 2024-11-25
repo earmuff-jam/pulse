@@ -1,5 +1,5 @@
 import { Divider, Stack } from '@mui/material';
-import RowHeader from '../common/RowHeader';
+import RowHeader from '../../utils/RowHeader';
 import { DownloadRounded } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { profileActions } from '../Profile/profileSlice';

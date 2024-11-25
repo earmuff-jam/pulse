@@ -1,11 +1,14 @@
-import { Accordion, Skeleton } from '@mui/material';
 import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { profileActions } from '../../Profile/profileSlice';
+
+import { EmptyComponent } from '@utils/utils';
+import { Accordion, Skeleton } from '@mui/material';
+import { profileActions } from '@features/Profile/profileSlice';
+
+import { RECENT_ACTIVITY_TYPE_MAPPER } from '../constants';
 import ActivityAccordionSummary from './ActivityAccordionSummary';
 import ActivityAccordionDetails from './ActivityAccordionDetails';
-import { RECENT_ACTIVITY_TYPE_MAPPER } from '../constants';
-import { EmptyComponent } from '../../common/utils';
 
 const RecentActivityAccordion = () => {
   const dispatch = useDispatch();

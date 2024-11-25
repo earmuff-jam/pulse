@@ -5,7 +5,7 @@ import { SnackbarProvider } from 'notistack';
 import { TourProvider } from '@reactour/tour';
 import { RouterProvider } from 'react-router-dom';
 import { Dialog } from '@mui/material';
-import { router } from './features/common/router';
+import { router } from './utils/router';
 import LandingPage from './features/LandingPage/LandingPage';
 
 const ApplicationValidator = () => {

@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { profileActions } from '../profileSlice';
-import TextFieldWithLabel from '../../../util/TextFieldWithLabel/TextFieldWithLabel';
+import TextFieldWithLabel from '@common/TextFieldWithLabel/TextFieldWithLabel';
 
 dayjs.extend(relativeTime);
 
@@ -94,7 +94,7 @@ const ProfileForm = () => {
         name="email_address"
         placeholder="Enter your unique email address"
         value={formData?.email_address.value || ''}
-        onChange={handleChange}
+        handleChange={handleChange}
         variant="outlined"
         size="small"
         error={Boolean(formData.email_address['errorMsg'].length)}
@@ -106,7 +106,7 @@ const ProfileForm = () => {
         name="phone_number"
         placeholder="Enter your phone number"
         value={formData?.phone_number.value || ''}
-        onChange={handleChange}
+        handleChange={handleChange}
         variant="outlined"
         size="small"
         error={Boolean(formData.phone_number['errorMsg'].length)}
@@ -118,7 +118,7 @@ const ProfileForm = () => {
         name="about_me"
         placeholder="Allow yourself to express your unique values with a short bio."
         value={formData?.about_me?.value || ''}
-        onChange={handleChange}
+        handleChange={handleChange}
         variant="outlined"
         multiline={true}
         rows={4}

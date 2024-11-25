@@ -7,7 +7,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { Accordion, Skeleton } from '@mui/material';
 import NoteAccordionSummary from './NoteAccordion/NoteAccordionSummary';
 import NoteAccordionDetails from './NoteAccordion/NoteAccordionDetails';
-import { categorizeNotes, ConfirmationBoxModal, EmptyComponent } from '../common/utils';
+import { categorizeNotes, ConfirmationBoxModal, EmptyComponent } from '../../utils/utils';
 
 const Note = ({ notes, loading, setEditMode, setSelectedNoteID }) => {
   const dispatch = useDispatch();

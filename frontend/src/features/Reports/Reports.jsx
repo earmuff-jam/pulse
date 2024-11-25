@@ -1,20 +1,20 @@
 import { Stack } from '@mui/material';
-import RowHeader from '../common/RowHeader';
+import RowHeader from '../../utils/RowHeader';
 import ReportCardWrapper from './ReportCardWrapper';
 import dayjs from 'dayjs';
 import { DownloadRounded, FilterAltRounded } from '@mui/icons-material';
-import { capitalizeFirstLetter } from '../common/utils';
+import { capitalizeFirstLetter } from '../../utils/utils';
 import ItemDetails from './ItemDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { inventoryActions } from '../InventoryList/inventorySlice';
 import { maintenancePlanActions } from '../Maintenance/maintenanceSlice';
-import DataTable from '../common/DataTable/DataTable';
+import DataTable from '../../common/DataTable/DataTable';
 import { ITEMS_IN_MAINTENANCE_PLAN_HEADER } from '../Maintenance/constants';
-import SimpleModal from '../common/SimpleModal';
 import FilterMenu from './FilterMenu';
 import { reportActions } from './reportSlice';
 import { FILTER_OPTIONS } from './constants';
+import SimpleModal from '@common/SimpleModal/SimpleModal';
 
 export default function Reports() {
   const dispatch = useDispatch();
