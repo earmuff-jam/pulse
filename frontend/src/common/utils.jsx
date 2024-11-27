@@ -38,19 +38,10 @@ export const EmptyComponent = ({ subtitle = '' }) => (
 /**
  * Confirmation Box Modal
  */
-export const ConfirmationBoxModal = ({
-  openDialog,
-  title,
-  handleClose,
-  maxSize,
-  textVariant,
-  text,
-  deleteID,
-  confirmDelete,
-}) => {
+export const ConfirmationBoxModal = ({ openDialog, title, handleClose, maxSize, deleteID, confirmDelete }) => {
   return openDialog ? (
     <SimpleModal title={title} handleClose={handleClose} maxSize={maxSize}>
-      <Typography variant={textVariant}>{text}</Typography>
+      <Typography variant="subtitle2">Delete this item?</Typography>
       <Stack direction="row" justifyContent="flex-end" spacing={1}>
         <Button onClick={handleClose}>Go back</Button>
         <Button variant="outlined" autoFocus onClick={() => confirmDelete(deleteID)}>

@@ -66,8 +66,6 @@ const Note = ({ notes, loading, setEditMode, setSelectedNoteID }) => {
       <ConfirmationBoxModal
         openDialog={confirmDelete}
         title="Confirm deletion"
-        text="Delete this item?"
-        textVariant="body2"
         handleClose={reset}
         maxSize="xs"
         deleteID={deleteID}

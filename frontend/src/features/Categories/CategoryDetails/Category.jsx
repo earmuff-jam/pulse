@@ -58,8 +58,6 @@ const Category = ({ categories = [], loading, setSelectedCategoryID, setDisplayM
       <ConfirmationBoxModal
         openDialog={openDialog}
         title="Confirm deletion"
-        text="Delete this item?"
-        textVariant="body2"
         handleClose={reset}
         maxSize="xs"
         deleteID={idToDelete}

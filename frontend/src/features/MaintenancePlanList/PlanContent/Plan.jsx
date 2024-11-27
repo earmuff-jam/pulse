@@ -55,10 +55,7 @@ const Plan = ({ maintenancePlan, loading, displayModal, setDisplayModal, setSele
       <ConfirmationBoxModal
         openDialog={openDialog}
         title="Confirm deletion"
-        text="Delete this item?"
-        textVariant="body2"
         handleClose={resetConfirmationBox}
-        showSubmit={false}
         maxSize="xs"
         deleteID={idToDelete}
         confirmDelete={confirmDelete}
