@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react';
 
 import dayjs from 'dayjs';
 import { produce } from 'immer';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { Card, CardMedia } from '@mui/material';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { AddPhotoAlternateRounded, ShareRounded } from '@mui/icons-material';
-import { Badge, Button, Card, CardActions, CardContent, CardMedia, IconButton, Stack, Typography } from '@mui/material';
 
 import SimpleModal from '../SimpleModal';
 import SharableGroups from '../SharableGroups';
 import ImagePicker from '../ImagePicker/ImagePicker';
 import { profileActions } from '../../features/Profile/profileSlice';
+import DetailsCardItemContent from './ItemContent/DetailsCardItemContent';
+import DetailsCardItemActions from './ItemContent/DetailsCardItemActions';
 import { categoryActions } from '../../features/Categories/categoriesSlice';
 import { maintenancePlanActions } from '../../features/MaintenancePlanList/maintenanceSlice';
 import { categoryItemDetailsActions } from '../../features/CategoryItemDetails/categoryItemDetailsSlice';
@@ -25,19 +25,12 @@ export default function DetailsCard({ selectedItem, selectedImage, isViewingCate
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userID = localStorage.getItem('userID');
-  const { favItems = [] } = useSelector((state) => state.profile);
 
   const [editImgMode, setEditImgMode] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
-
-  const isFavourite = favItems.some(
-    (v) => v.category_id === selectedItem.id || v.maintenance_plan_id === selectedItem.id
-  );
-
-  const isShared = selectedItem?.sharable_groups?.length > 1 || false;
 
   const handleUpload = (id, selectedImage) => {
     if (isViewingCategory) {
@@ -70,26 +63,7 @@ export default function DetailsCard({ selectedItem, selectedImage, isViewingCate
         navigate('/');
       }
     }
-  };
-
-  const handleFavItem = (_, selectedID, isFavourite) => {
-    let draftFavItem = {};
-    if (isViewingCategory) {
-      draftFavItem = { category_id: selectedID };
-    } else {
-      draftFavItem = { maintenance_plan_id: selectedID };
-    }
-
-    if (isFavourite) {
-      // toggle fav off if exists
-      const currentItems = favItems?.filter(
-        (v) => v.category_id === selectedID || v.maintenance_plan_id === selectedID
-      );
-      const currentItem = currentItems.find(() => true);
-      dispatch(profileActions.removeFavItem(currentItem?.id));
-    } else {
-      dispatch(profileActions.saveFavItem(draftFavItem));
-    }
+    handleCloseModal();
   };
 
   useEffect(() => {
@@ -100,42 +74,12 @@ export default function DetailsCard({ selectedItem, selectedImage, isViewingCate
     <>
       <Card>
         <CardMedia sx={{ height: '10rem' }} image={selectedImage || '/blank_canvas.png'} />
-        <CardContent>
-          <Stack direction="row" alignItems="flex-start">
-            <IconButton size="small" onClick={(ev) => handleFavItem(ev, selectedItem.id, isFavourite)}>
-              <FavoriteIcon fontSize="small" sx={{ color: isFavourite ? selectedItem.color : 'secondary.main' }} />
-            </IconButton>
-            <Typography gutterBottom variant="h5" component="div">
-              {selectedItem.name}
-            </Typography>
-          </Stack>
-          <Typography variant="body2" color="text.secondary">
-            {selectedItem.description}
-          </Typography>
-        </CardContent>
-        <CardActions
-          sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignContent: 'center' }}
-        >
-          <Typography variant="caption">Last updated {dayjs(selectedItem?.updated_at).fromNow()}</Typography>
-          <Stack direction="row" alignItems="center">
-            <Badge
-              badgeContent={isShared ? selectedItem?.sharable_groups.length - 1 : 0} // account for creator in sharable_groups
-              color="secondary"
-              max={10}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-            >
-              <Button size="small" endIcon={<ShareRounded />} onClick={handleOpenModal}>
-                Share
-              </Button>
-            </Badge>
-            <IconButton onClick={() => setEditImgMode(true)}>
-              <AddPhotoAlternateRounded />
-            </IconButton>
-          </Stack>
-        </CardActions>
+        <DetailsCardItemContent selectedItem={selectedItem} isViewingCategory={isViewingCategory} />
+        <DetailsCardItemActions
+          selectedItem={selectedItem}
+          handleOpenModal={handleOpenModal}
+          setEditImgMode={setEditImgMode}
+        />
       </Card>
       {openModal && (
         <SimpleModal
