@@ -1,13 +1,13 @@
 import { Paper, Stack, useMediaQuery } from '@mui/material';
-import UserDemographics from './UserDetails/UserDemographics';
-import UserDetails from './UserDetails/UserDetails';
-import UserStatus from './UserDetails/UserStatus';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import SimpleModal from '../../common/SimpleModal';
-import AppearanceSettings from './UserDetails/AppearanceSettings';
-import ProfileForm from './ProfileForm/ProfileForm';
 import { useTheme } from '@emotion/react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import SimpleModal from '@common/SimpleModal';
+import UserDemographics from '@features/Profile/UserDemographics/UserDemographics';
+import UserDetails from '@features/Profile/UserDetails/UserDetails';
+import UserStatus from '@features/Profile/UserStatus/UserStatus';
+import AppearanceSettings from '@features/Profile/AppearanceSettings/AppearanceSettings';
+import ProfileForm from '@features/Profile/ProfileForm/ProfileForm';
 
 const ProfilePage = () => {
   const theme = useTheme();

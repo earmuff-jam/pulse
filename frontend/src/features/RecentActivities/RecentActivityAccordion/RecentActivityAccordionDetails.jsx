@@ -1,7 +1,7 @@
 import { AccordionDetails } from '@mui/material';
-import RecentActivity from '../ActivityDetails/RecentActivity';
+import RecentActivity from '@features/RecentActivities/RecentActivity/RecentActivity';
 
-export default function ActivityAccordionDetails({ index, activity }) {
+export default function RecentActivityAccordionDetails({ index, activity }) {
   return (
     <AccordionDetails>
       <RecentActivity key={index} index={index} activity={activity} />

@@ -1,11 +1,12 @@
-import { Divider, Stack } from '@mui/material';
-import RowHeader from '../../common/RowHeader';
-import { DownloadRounded } from '@mui/icons-material';
-import { useDispatch } from 'react-redux';
-import { profileActions } from '../Profile/profileSlice';
 import dayjs from 'dayjs';
+import { useDispatch } from 'react-redux';
+
+import RowHeader from '@common/RowHeader';
+import { Divider, Stack } from '@mui/material';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import RecentActivityAccordion from './ActivityAccordion/RecentActivityAccordion';
+import { DownloadRounded } from '@mui/icons-material';
+import { profileActions } from '@features/Profile/profileSlice';
+import RecentActivityAccordion from '@features/RecentActivities/RecentActivityAccordion/RecentActivityAccordion';
 
 dayjs.extend(relativeTime);
 

@@ -1,5 +1,7 @@
 import { useTheme } from '@emotion/react';
+
 import 'chart.js/auto';
+
 import { Pie } from 'react-chartjs-2';
 
 const UserStats = ({ label, value, color, total }) => {
@@ -11,6 +13,7 @@ const UserStats = ({ label, value, color, total }) => {
         label: label,
         data: [value, total],
         backgroundColor: [color, theme.palette.background.default],
+        borderColor: theme.palette.background.default,
         hoverOffset: 4,
       },
     ],

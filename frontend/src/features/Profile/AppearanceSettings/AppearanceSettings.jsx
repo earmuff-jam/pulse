@@ -3,7 +3,8 @@ import { DarkModeRounded, GridViewRounded } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
-import { profileActions } from '../profileSlice';
+import { profileActions } from '@features/Profile/profileSlice';
+import { enqueueSnackbar } from 'notistack';
 
 const AppearanceSettings = ({ loading, profileDetails = {} }) => {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ const AppearanceSettings = ({ loading, profileDetails = {} }) => {
       updated_at: dayjs().toISOString(),
     };
     dispatch(profileActions.updateProfileDetails({ draftData }));
+    enqueueSnackbar('Successfully updated profile details.', {
+      variant: 'success',
+    });
   };
 
   useEffect(() => {
@@ -38,7 +42,7 @@ const AppearanceSettings = ({ loading, profileDetails = {} }) => {
           Appearance Settings
         </Typography>
         <Typography variant="caption" gutterBottom>
-          Change the look and feel of the application. Switch between dark mode and light mode if needed.
+          Change the look and feel of the application.
         </Typography>
         <Divider />
       </Box>

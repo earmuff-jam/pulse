@@ -1,10 +1,11 @@
-import { Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
+
+import { Stack, Typography } from '@mui/material';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { capitalizeFirstLetter } from '@common/utils';
 import { CreateNewFolderRounded } from '@mui/icons-material';
-import { RECENT_ACTIVITY_TYPE_MAPPER } from '../constants';
-import { capitalizeFirstLetter } from '../../../common/utils';
-import StyledTimeline from '../StyledTimeline/StyledTimeline';
+import { RECENT_ACTIVITY_TYPE_MAPPER } from '@features/RecentActivities/constants';
+import StyledTimeline from '@features/RecentActivities/StyledTimeline/StyledTimeline';
 
 const RecentActivity = ({ activity }) => {
   dayjs.extend(relativeTime);

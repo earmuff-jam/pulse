@@ -1,11 +1,13 @@
-import { Accordion, Skeleton } from '@mui/material';
 import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { profileActions } from '../../Profile/profileSlice';
-import ActivityAccordionSummary from './ActivityAccordionSummary';
-import ActivityAccordionDetails from './ActivityAccordionDetails';
-import { RECENT_ACTIVITY_TYPE_MAPPER } from '../constants';
-import { EmptyComponent } from '../../../common/utils';
+
+import { EmptyComponent } from '@common/utils';
+import { Accordion, Skeleton } from '@mui/material';
+import { profileActions } from '@features/Profile/profileSlice';
+import { RECENT_ACTIVITY_TYPE_MAPPER } from '@features/RecentActivities/constants';
+import RecentActivityAccordionSummary from '@features/RecentActivities/RecentActivityAccordion/RecentActivityAccordionSummary';
+import RecentActivityAccordionDetails from '@features/RecentActivities/RecentActivityAccordion/RecentActivityAccordionDetails';
 
 const RecentActivityAccordion = () => {
   const dispatch = useDispatch();
@@ -28,12 +30,12 @@ const RecentActivityAccordion = () => {
     <>
       {recentActivities.map((activity, index) => (
         <Accordion key={index} elevation={0} disableGutters>
-          <ActivityAccordionSummary
+          <RecentActivityAccordionSummary
             title={activity.title}
             label={activity.custom_action}
             prefix={RECENT_ACTIVITY_TYPE_MAPPER[activity.type].display}
           />
-          <ActivityAccordionDetails index={index} activity={activity} />
+          <RecentActivityAccordionDetails index={index} activity={activity} />
         </Accordion>
       ))}
     </>

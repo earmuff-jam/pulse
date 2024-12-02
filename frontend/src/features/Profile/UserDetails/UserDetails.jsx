@@ -1,12 +1,22 @@
-import { Typography, Stack, Divider, Paper } from '@mui/material';
-import { CheckCircleOutlineRounded } from '@mui/icons-material';
 import dayjs from 'dayjs';
+
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
+import { GridViewRounded, OnlinePredictionRounded, UpdateRounded, ViewListRounded } from '@mui/icons-material';
+
+dayjs.extend(relativeTime);
 
 const BIO_PLACEHOLDER = 'Add short bio about yourself to let others know details about you.';
 
 export default function UserDetails({ data = {} }) {
   return (
-    <Paper sx={{ padding: '1rem', flexGrow: 1 }}>
+    <Paper
+      sx={{
+        padding: '1rem',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <Typography variant="h5" color="text.secondary">
         User details
       </Typography>
@@ -14,15 +24,22 @@ export default function UserDetails({ data = {} }) {
       <Typography variant="caption" color="text.secondary">
         {data.about_me || BIO_PLACEHOLDER}
       </Typography>
-      <Stack marginTop={'1rem'} spacing={1}>
+      <Box sx={{ flexGrow: 1 }} />
+      <Stack spacing={1}>
         <Stack direction={'row'} alignItems={'center'} spacing={1}>
-          <CheckCircleOutlineRounded color="primary" />
+          <OnlinePredictionRounded color="primary" />
           <Typography variant="subtitle2" color="text.secondary">
-            Email Address : {data.email_address}
+            Online
           </Typography>
         </Stack>
         <Stack direction={'row'} alignItems={'center'} spacing={1}>
-          <CheckCircleOutlineRounded color="primary" />
+          {data?.grid_view ? <GridViewRounded color="primary" /> : <ViewListRounded color="primary" />}
+          <Typography variant="subtitle2" color="text.secondary">
+            {data?.grid_view ? 'Viewing Assets as Grid' : 'Viewing Assets as List'}
+          </Typography>
+        </Stack>
+        <Stack direction={'row'} alignItems={'center'} spacing={1}>
+          <UpdateRounded color="primary" />
           <Typography variant="subtitle2" color="text.secondary">
             Last updated at : {dayjs(data.updated_at).fromNow()}
           </Typography>

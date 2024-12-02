@@ -1,5 +1,5 @@
+import UserStats from '@features/Profile/UserStats/UserStats';
 import { Divider, Stack, Typography } from '@mui/material';
-import ProfileStatsChart from './UserStats';
 
 export default function UserStatus({ onlySmallScreen }) {
   const profileStats = [
@@ -43,7 +43,7 @@ export default function UserStatus({ onlySmallScreen }) {
             <Typography variant="h5" color="text.secondary">
               {v.value}
             </Typography>
-            <ProfileStatsChart label={v.label} value={v.value} color={v.color} total={total} />
+            <UserStats label={v.label} value={v.value} color={v.color} total={total} />
           </Stack>
         ))}
       </Stack>
