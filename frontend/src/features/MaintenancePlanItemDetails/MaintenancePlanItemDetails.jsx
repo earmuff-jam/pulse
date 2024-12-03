@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
 
+import { enqueueSnackbar } from 'notistack';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import SimpleModal from '@common/SimpleModal';
 import { Skeleton, Stack } from '@mui/material';
 import { AddRounded } from '@mui/icons-material';
-
-import SimpleModal from '../../common/SimpleModal';
-import { inventoryActions } from '../InventoryList/inventorySlice';
-import { maintenancePlanItemActions } from './maintenancePlanItemSlice';
-import MaintenancePlanItemDetailsGraph from './MaintenancePlanItemDetailsContent/MaintenancePlanItemDetailsGraph';
-import MaintenancePlanItemDetailsHeader from './MaintenancePlanItemDetailsHeader/MaintenancePlanItemDetailsHeader';
-import MaintenancePlanItemDetailsContent from './MaintenancePlanItemDetailsContent/MaintenancePlanItemDetailsContent';
-import MaintenancePlanItemDetailsAddAsset from './MaintenancePlanItemDetailsAddAsset/MaintenancePlanItemDetailsAddAsset';
-import { ConfirmationBoxModal } from '../../common/utils';
-import { enqueueSnackbar } from 'notistack';
+import { ConfirmationBoxModal } from '@common/utils';
+import { inventoryActions } from '@features/InventoryList/inventorySlice';
+import { maintenancePlanItemActions } from '@features/MaintenancePlanItemDetails/maintenancePlanItemSlice';
+import MaintenancePlanItemDetailsGraph from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsContent/MaintenancePlanItemDetailsGraph';
+import MaintenancePlanItemDetailsHeader from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsHeader/MaintenancePlanItemDetailsHeader';
+import MaintenancePlanItemDetailsContent from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsContent/MaintenancePlanItemDetailsContent';
+import MaintenancePlanItemDetailsAddAsset from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsAddAsset/MaintenancePlanItemDetailsAddAsset';
 
 export default function MaintenancePlanItemDetails() {
   const { id } = useParams();
@@ -83,7 +82,7 @@ export default function MaintenancePlanItemDetails() {
   }
 
   return (
-    <Stack direction="column" spacing="1rem">
+    <Stack spacing={1}>
       <MaintenancePlanItemDetailsHeader
         label={selectedMaintenancePlan?.name ? `${selectedMaintenancePlan.name} Overview` : 'Maintenance Plan Overview'}
         caption="View details of selected maintenance plan"
