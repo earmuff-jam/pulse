@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
-
 import dayjs from 'dayjs';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Stack } from '@mui/material';
-
-import { FILTER_OPTIONS } from './constants';
-import { reportActions } from './reportSlice';
-import SimpleModal from '../../common/SimpleModal';
-import FilterMenu from './ReportsFilterMenu/FilterMenu';
-import ReportsHeader from './ReportHeader/ReportsHeader';
-import ReportContent from './ReportContent/ReportContent';
-import { inventoryActions } from '../InventoryList/inventorySlice';
-import { maintenancePlanActions } from '../MaintenancePlanList/maintenanceSlice';
+import SimpleModal from '@common/SimpleModal';
+import { FILTER_OPTIONS } from '@features/Reports/constants';
+import { reportActions } from '@features/Reports/reportSlice';
+import ReportsHeader from '@features/Reports/ReportHeader/ReportsHeader';
+import ReportContent from '@features/Reports/ReportContent/ReportContent';
+import { inventoryActions } from '@features/InventoryList/inventorySlice';
+import ReportsFilterMenu from '@features/Reports/ReportsFilterMenu/ReportsFilterMenu';
+import { maintenancePlanActions } from '@features/MaintenancePlanList/maintenanceSlice';
 
 export default function Reports() {
   const dispatch = useDispatch();
@@ -48,8 +46,8 @@ export default function Reports() {
   }, [maintenancePlanListLoading, maintenancePlanList.length]);
 
   useEffect(() => {
-    dispatch(inventoryActions.getAllInventoriesForUser({ since: sinceValue }));
     dispatch(maintenancePlanActions.getPlans());
+    dispatch(inventoryActions.getAllInventoriesForUser({ since: sinceValue }));
   }, []);
 
   useEffect(() => {
@@ -69,7 +67,7 @@ export default function Reports() {
         downloadReports={downloadReports}
         selectedMaintenancePlan={selectedMaintenancePlan}
       />
-      <ReportContent sinceValue={sinceValue} inventories={inventories} />
+      <ReportContent sinceValue={sinceValue} assets={inventories} />
       {displayModal && (
         <SimpleModal
           title="Filter results"
@@ -77,7 +75,7 @@ export default function Reports() {
           handleClose={closeFilter}
           maxSize="xs"
         >
-          <FilterMenu
+          <ReportsFilterMenu
             handleClose={closeFilter}
             sinceValue={sinceValue}
             setSinceValue={setSinceValue}

@@ -1,12 +1,17 @@
 import { useDispatch } from 'react-redux';
 
+import { FILTER_OPTIONS } from '@features/Reports/constants';
+import { reportActions } from '@features/Reports/reportSlice';
+import { inventoryActions } from '@features/InventoryList/inventorySlice';
 import { Button, Checkbox, FormControlLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
 
-import { FILTER_OPTIONS } from '../constants';
-import { reportActions } from '../reportSlice';
-import { inventoryActions } from '../../InventoryList/inventorySlice';
-
-export default function FilterMenu({ handleClose, sinceValue, setSinceValue, includeOverdue, setIncludeOverdue }) {
+export default function ReportsFilterMenu({
+  handleClose,
+  sinceValue,
+  setSinceValue,
+  includeOverdue,
+  setIncludeOverdue,
+}) {
   const dispatch = useDispatch();
 
   const handleSinceValue = (e) => {

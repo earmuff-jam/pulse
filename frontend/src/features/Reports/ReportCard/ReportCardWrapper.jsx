@@ -1,6 +1,6 @@
 import { Card, CardContent, Chip, Stack, Typography } from '@mui/material';
 
-export default function ReportCardWrapper({ title, chipLabel, value, iconType, footerText, footerSuffix, children }) {
+export default function ReportCardWrapper({ title, chipLabel, value, footerText, footerSuffix, children }) {
   return (
     <Card
       sx={{
@@ -25,7 +25,6 @@ export default function ReportCardWrapper({ title, chipLabel, value, iconType, f
                   {value}
                 </Typography>
               )}
-              {iconType}
             </Stack>
             {children}
           </Stack>

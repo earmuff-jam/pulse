@@ -1,12 +1,14 @@
-import { Stack } from '@mui/material';
-import { DownloadRounded, FilterAltRounded } from '@mui/icons-material';
-
 import dayjs from 'dayjs';
 
-import ItemDetails from './ItemDetails';
-import RowHeader from '../../../common/RowHeader';
-import ReportCardWrapper from './ReportCardWrapper';
-import { capitalizeFirstLetter } from '../../../common/utils';
+import { Stack } from '@mui/material';
+import RowHeader from '@common/RowHeader';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { capitalizeFirstLetter } from '@common/utils';
+import { DownloadRounded, FilterAltRounded } from '@mui/icons-material';
+import ReportCardWrapper from '@features/Reports/ReportCard/ReportCardWrapper';
+import ReportItemDetails from '@features/Reports/ReportItemDetails/ReportItemDetails';
+
+dayjs.extend(relativeTime);
 
 export default function ReportsHeader({
   sinceValue,
@@ -60,7 +62,7 @@ export default function ReportsHeader({
       </Stack>
       <Stack sx={{ flexDirection: { xs: 'column', sm: 'row' }, gap: '1rem' }}>
         <ReportCardWrapper title="Recently Added Asset">
-          <ItemDetails
+          <ReportItemDetails
             loading={loading}
             avatarValue={
               Object.keys(selectedMaintenancePlan) > 0 && capitalizeFirstLetter(selectedAsset?.updater_name?.charAt(0))
@@ -70,7 +72,7 @@ export default function ReportsHeader({
           />
         </ReportCardWrapper>
         <ReportCardWrapper title="Maintenance due">
-          <ItemDetails
+          <ReportItemDetails
             loading={loading}
             avatarValue={
               Object.keys(selectedMaintenancePlan) > 0 &&
