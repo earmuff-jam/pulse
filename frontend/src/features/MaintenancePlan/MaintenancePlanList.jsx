@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 
 import { Box } from '@mui/material';
 import SimpleModal from '@common/SimpleModal';
-import MaintenancePlanHeader from '@features/MaintenancePlan/MaintenancePlanHeader/MaintenancePlanHeader';
 import MaintenancePlanContent from '@features/MaintenancePlan/MaintenancePlanContent/MaintenancePlanContent';
 import MaintenancePlanAddPlan from '@features/MaintenancePlan/MaintenancePlanAddPlan/MaintenancePlanAddPlan';
+import SectionCardHeader from '@common/SectionCard/SectionCardHeader';
+import { maintenancePlanActions } from '@features/MaintenancePlan/maintenanceSlice';
 
 const MaintenancePlanList = () => {
   const { maintenancePlan, loading } = useSelector((state) => state.maintenance);
@@ -22,6 +23,10 @@ const MaintenancePlanList = () => {
   const handleCloseAddNewPlan = () => {
     setDisplayModal(false);
     setSelectedMaintenancePlanID('');
+  };
+
+  const handleDownload = () => {
+    dispatch(maintenancePlanActions.download());
   };
 
   const filterAndBuildMaintenancePlans = (plans, selectedFilter) => {
@@ -45,12 +50,16 @@ const MaintenancePlanList = () => {
 
   return (
     <Box sx={{ py: 2 }}>
-      <MaintenancePlanHeader
+      <SectionCardHeader
+        title="Maintenance Plans"
+        caption={selectedFilter ? `Applying ${selectedFilter} status filter` : 'Assign items to maintenance plans'}
+        primaryBtnTitle="Add plan"
         toggleModal={toggleModal}
         selectedFilter={selectedFilter}
         setSelectedFilter={setSelectedFilter}
         sortingOrder={sortingOrder}
         setSortingOrder={setSortingOrder}
+        handleDownload={handleDownload}
       />
       <MaintenancePlanContent
         loading={loading}
