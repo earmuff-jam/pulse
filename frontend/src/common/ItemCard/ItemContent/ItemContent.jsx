@@ -5,10 +5,10 @@ import { AddRounded, RemoveRounded } from '@mui/icons-material';
 import { VIEW_INVENTORY_LIST_HEADERS } from '@features/Assets/constants';
 import TableComponent from '@common/DataTable/CustomTableComponent/TableComponent';
 
-export default function MaintenancePlanItemDetailsContent({
+export default function ItemContent({
   selectedIDList,
   setSelectedIDList,
-  itemsInMaintenancePlan,
+  items,
   handleOpenModal,
   handleRemoveAssociation,
 }) {
@@ -17,7 +17,7 @@ export default function MaintenancePlanItemDetailsContent({
       if (selectedIDList.length !== 0) {
         setSelectedIDList([]);
       } else {
-        setSelectedIDList(itemsInMaintenancePlan.map((v) => v.id));
+        setSelectedIDList(items.map((v) => v.id));
       }
     } else {
       const selectedIndex = selectedIDList.indexOf(id);
@@ -51,7 +51,7 @@ export default function MaintenancePlanItemDetailsContent({
       <Stack spacing={2}>
         <RowHeader
           title="Items"
-          caption={`Total ${pluralizeWord('item', itemsInMaintenancePlan?.length || 0)}`}
+          caption={`Total ${pluralizeWord('item', items?.length || 0)}`}
           primaryButtonTextLabel="Add"
           primaryStartIcon={<AddRounded />}
           handleClickPrimaryButton={handleOpenModal}
@@ -62,7 +62,7 @@ export default function MaintenancePlanItemDetailsContent({
         />
         <TableComponent
           showActions={false}
-          data={itemsInMaintenancePlan}
+          data={items}
           columns={Object.values(VIEW_INVENTORY_LIST_HEADERS).filter((v) => v.displayConcise)}
           rowFormatter={rowFormatter}
           selectedIDList={selectedIDList}

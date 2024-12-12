@@ -4,7 +4,7 @@ import { useTheme } from '@emotion/react';
 import BarChart from '@common/Chart/BarChart';
 import { EmptyComponent } from '@common/utils';
 
-export default function MaintenancePlanItemDetailsGraphContent({ associatedAssets = [] }) {
+export default function ItemGraph({ associatedAssets = [] }) {
   const theme = useTheme();
 
   const displayGraph = Boolean(associatedAssets?.length > 0);
