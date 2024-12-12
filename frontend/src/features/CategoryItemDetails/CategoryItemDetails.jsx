@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
-
+import { enqueueSnackbar } from 'notistack';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Skeleton, Stack } from '@mui/material';
 import { AddRounded } from '@mui/icons-material';
 
-import SimpleModal from '../../common/SimpleModal';
-import { inventoryActions } from '../Assets/inventorySlice';
-import { categoryItemDetailsActions } from './categoryItemDetailsSlice';
-import CategoryItemDetailsGraph from './CategoryItemDetailsContent/CategoryItemDetailsGraph';
-import CategoryItemDetailsHeader from './CategoryItemDetailsHeader/CategoryItemDetailsHeader';
-import CategoryItemDetailsAddAsset from './CategoryItemDetailsAddAsset/CategoryItemDetailsAddAsset';
-import CategoryItemDetailsDataTable from './CategoryItemDetailsContent/CategoryItemDetailsDataTable';
-import { ConfirmationBoxModal } from '../../common/utils';
-import { enqueueSnackbar } from 'notistack';
+import SimpleModal from '@common/SimpleModal';
+import { ConfirmationBoxModal } from '@common/utils';
+import AddItem from '@common/ItemCard/AddItem/AddItem';
+import ItemHeader from '@common/ItemCard/ItemHeader/ItemHeader';
+
+import ItemContent from '@common/ItemCard/ItemContent/ItemContent';
+import { inventoryActions } from '@features/Assets/inventorySlice';
+import ItemGraphWrapper from '@common/ItemCard/ItemGraph/ItemGraphWrapper';
+import { categoryItemDetailsActions } from '@features/CategoryItemDetails/categoryItemDetailsSlice';
 
 export default function CategoryItemDetails() {
   const { id } = useParams();
@@ -80,20 +80,20 @@ export default function CategoryItemDetails() {
 
   return (
     <Stack direction="column" spacing="1rem">
-      <CategoryItemDetailsHeader
-        selectedCategory={selectedCategory}
-        selectedCategoryImage={selectedCategoryImage}
-        itemsInCategory={itemsInCategory}
-        handleOpenModal={handleOpenModal}
+      <ItemHeader
+        label={selectedCategory?.name ? `${selectedCategory.name} Overview` : 'Category Overview'}
+        caption="View details of selected category"
+        item={selectedCategory}
+        image={selectedCategoryImage}
       />
-      <CategoryItemDetailsDataTable
-        rowSelected={rowSelected}
-        setRowSelected={setRowSelected}
-        itemsInCategory={itemsInCategory}
+      <ItemContent
+        selectedIDList={rowSelected}
+        setSelectedIDList={setRowSelected}
+        items={itemsInCategory}
         handleOpenModal={handleOpenModal}
         handleRemoveAssociation={handleRemoveAssociation}
       />
-      <CategoryItemDetailsGraph itemsInCategory={itemsInCategory} />
+      <ItemGraphWrapper associatedAssets={itemsInCategory} />
       {displayModal && (
         <SimpleModal
           title={`Add items to ${selectedCategory?.name}`}
@@ -104,10 +104,11 @@ export default function CategoryItemDetails() {
           secondaryButtonIcon={<AddRounded />}
           maxSize="md"
         >
-          <CategoryItemDetailsAddAsset
-            rowSelected={rowSelected}
-            setRowSelected={setRowSelected}
-            itemsInCategory={itemsInCategory}
+          <AddItem
+            selectedIDList={rowSelected}
+            setSelectedIDList={setRowSelected}
+            resetSelection={resetSelection}
+            associatedItems={itemsInCategory}
           />
         </SimpleModal>
       )}

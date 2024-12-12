@@ -5,11 +5,7 @@ import { Stack } from '@mui/material';
 import { VIEW_INVENTORY_LIST_HEADERS } from '@features/Assets/constants';
 import TableComponent from '@common/DataTable/CustomTableComponent/TableComponent';
 
-export default function MaintenancePlanItemDetailsAddAsset({
-  selectedIDList,
-  setSelectedIDList,
-  itemsInMaintenancePlan,
-}) {
+export default function AddItem({ selectedIDList, setSelectedIDList, associatedItems }) {
   const { inventories, loading: inventoriesLoading } = useSelector((state) => state.inventory);
 
   const handleRowSelection = (_, id) => {
@@ -54,7 +50,7 @@ export default function MaintenancePlanItemDetailsAddAsset({
         paper
         showActions={false}
         isLoading={inventoriesLoading}
-        data={inventories.filter((inventory) => !itemsInMaintenancePlan?.some((item) => item.item_id === inventory.id))}
+        data={inventories.filter((inventory) => !associatedItems?.some((item) => item.item_id === inventory.id))}
         columns={Object.values(VIEW_INVENTORY_LIST_HEADERS).filter((v) => v.displayConcise)}
         rowFormatter={rowFormatter}
         selectedIDList={selectedIDList}

@@ -1,18 +1,18 @@
-import MaintenancePlanItemDetailsGraph from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsContent/MaintenancePlanItemDetailsGraph';
+import ItemGraphWrapper from '@common/ItemCard/ItemGraph/ItemGraphWrapper';
 
 export default {
-  title: 'Maintenance/MaintenancePlanItem/MaintenancePlanItemDetailsGraph',
-  component: MaintenancePlanItemDetailsGraph,
+  title: 'Common/ItemCard/ItemGraph/ItemGraphWrapper',
+  component: ItemGraphWrapper,
   tags: ['autodocs'],
 };
 
-const Template = (args) => <MaintenancePlanItemDetailsGraph {...args} />;
+const Template = (args) => <ItemGraphWrapper {...args} />;
 
-export const MaintenancePlanItemDetailsGraphDefault = Template.bind({});
-export const MaintenancePlanItemDetailsGraphMultiple = Template.bind({});
-export const MaintenancePlanItemDetailsGraphEmpty = Template.bind({});
+export const ItemGraphWrapperDefault = Template.bind({});
+export const ItemGraphWrapperMultiple = Template.bind({});
+export const ItemGraphWrapperEmpty = Template.bind({});
 
-MaintenancePlanItemDetailsGraphDefault.args = {
+ItemGraphWrapperDefault.args = {
   associatedAssets: [
     {
       id: '6e9df958-cb4d-4d5f-a38c-c31544eaa115',
@@ -34,11 +34,11 @@ MaintenancePlanItemDetailsGraphDefault.args = {
   ],
 };
 
-MaintenancePlanItemDetailsGraphEmpty.args = {
+ItemGraphWrapperEmpty.args = {
   associatedAssets: [],
 };
 
-MaintenancePlanItemDetailsGraphMultiple.args = {
+ItemGraphWrapperMultiple.args = {
   associatedAssets: [
     {
       id: '6e9df958-cb4d-4d5f-a38c-c31544eaa115',

@@ -7,13 +7,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import SimpleModal from '@common/SimpleModal';
 import { Skeleton, Stack } from '@mui/material';
 import { AddRounded } from '@mui/icons-material';
+
 import { ConfirmationBoxModal } from '@common/utils';
+import ItemHeader from '@common/ItemCard/ItemHeader/ItemHeader';
 import { inventoryActions } from '@features/Assets/inventorySlice';
 import { maintenancePlanItemActions } from '@features/MaintenancePlanItemDetails/maintenancePlanItemSlice';
-import MaintenancePlanItemDetailsGraph from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsContent/MaintenancePlanItemDetailsGraph';
-import MaintenancePlanItemDetailsHeader from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsHeader/MaintenancePlanItemDetailsHeader';
-import MaintenancePlanItemDetailsContent from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsContent/MaintenancePlanItemDetailsContent';
-import MaintenancePlanItemDetailsAddAsset from '@features/MaintenancePlanItemDetails/MaintenancePlanItemDetailsAddAsset/MaintenancePlanItemDetailsAddAsset';
+
+import AddItem from '@common/ItemCard/AddItem/AddItem';
+import ItemContent from '@common/ItemCard/ItemContent/ItemContent';
+import ItemGraphWrapper from '@common/ItemCard/ItemGraph/ItemGraphWrapper';
 
 export default function MaintenancePlanItemDetails() {
   const { id } = useParams();
@@ -90,20 +92,20 @@ export default function MaintenancePlanItemDetails() {
 
   return (
     <Stack spacing={3}>
-      <MaintenancePlanItemDetailsHeader
+      <ItemHeader
         label={selectedMaintenancePlan?.name ? `${selectedMaintenancePlan.name} Overview` : 'Maintenance Plan Overview'}
         caption="View details of selected maintenance plan"
         item={selectedMaintenancePlan}
         image={selectedMaintenancePlanImage}
       />
-      <MaintenancePlanItemDetailsContent
+      <ItemContent
         selectedIDList={selectedIDList}
         setSelectedIDList={setSelectedIDList}
-        itemsInMaintenancePlan={itemsInMaintenancePlan}
+        items={itemsInMaintenancePlan}
         handleOpenModal={handleOpenModal}
         handleRemoveAssociation={handleRemoveAssociation}
       />
-      <MaintenancePlanItemDetailsGraph associatedAssets={itemsInMaintenancePlan} />
+      <ItemGraphWrapper associatedAssets={itemsInMaintenancePlan} />
       {displayModal && (
         <SimpleModal
           title={`Add items to ${selectedMaintenancePlan?.name}`}
@@ -114,11 +116,11 @@ export default function MaintenancePlanItemDetails() {
           secondaryButtonIcon={<AddRounded />}
           disableSecondaryButton={selectedIDList.length <= 0}
         >
-          <MaintenancePlanItemDetailsAddAsset
+          <AddItem
             selectedIDList={selectedIDList}
             setSelectedIDList={setSelectedIDList}
             resetSelection={resetSelection}
-            itemsInMaintenancePlan={itemsInMaintenancePlan}
+            associatedItems={itemsInMaintenancePlan}
           />
         </SimpleModal>
       )}
