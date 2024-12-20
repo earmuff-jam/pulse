@@ -7,6 +7,7 @@ import { SaveRounded } from '@mui/icons-material';
 import { inventoryActions } from '@features/Assets/inventorySlice';
 import ViewFileContent from '@features/Assets/AddAssetsInBulk/ViewFileContent';
 import AddAssetsInBulkActions from '@features/Assets/AddAssetsInBulk/AddAssetsInBulkActions';
+import { enqueueSnackbar } from 'notistack';
 
 export default function AddAssetsInBulk({ handleClose }) {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export default function AddAssetsInBulk({ handleClose }) {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      console.log(file);
       setFileDetails({ name: file.name, lastModifiedDate: file.lastModifiedDate, size: file.size });
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -62,10 +64,18 @@ export default function AddAssetsInBulk({ handleClose }) {
     handleClose();
   };
 
+  const isDisabled = () => {
+    console.log(fileDetails);
+    return Boolean(!fileDetails?.name.length) /* || !file.type.includes() */;
+  };
+
   const submit = () => {
     if (Array.isArray(uploadedFileInJson) && uploadedFileInJson.length > 0) {
       dispatch(inventoryActions.addBulkInventory(uploadedFileInJson));
     }
+    enqueueSnackbar('Uploaded inventories in bulk.', {
+      variant: 'success',
+    });
     resetData();
   };
 
@@ -83,12 +93,7 @@ export default function AddAssetsInBulk({ handleClose }) {
         lastModifiedDate={fileDetails.lastModifiedDate}
         size={fileDetails.size}
       />
-      <Button
-        variant="outlined"
-        startIcon={<SaveRounded />}
-        onClick={submit}
-        disabled={Boolean(!fileDetails?.name.length)}
-      >
+      <Button variant="outlined" startIcon={<SaveRounded />} onClick={submit} disabled={isDisabled()}>
         Save
       </Button>
     </Stack>
